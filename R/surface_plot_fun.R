@@ -113,10 +113,10 @@ surface_plots = function(results){
     htmlwidgets::saveWidget(as_widget(fig_obs), "observed_ivw_uplift_ukb_vs_fg_meta.html")
     htmlwidgets::saveWidget(as_widget(fig_exp), "expected_ivw_uplift_ukb_vs_fg_meta.html")
     htmlwidgets::saveWidget(as_widget(fig_diff), "rel_err_ivw_uplift_ukb_vs_fg_meta.html")
-    plot1 <- readPNG('submission_2/exp_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot2 <- readPNG('submission_2/obs_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot3 <- readPNG('submission_2/rel_err_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot4 <- readPNG("submission_2/log10_exp_obs_uplift_both_meta_maf_1e4_1e2_1000_trials")
+    plot1 <- readPNG('data/exp_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
+    plot2 <- readPNG('data/obs_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
+    plot3 <- readPNG('data/rel_err_meta_uplift_maf_1e4_1e2_1000_trials.png')
+    plot4 <- readPNG("data/log10_exp_obs_uplift_both_meta_maf_1e4_1e2_1000_trials")
     grid.arrange(rasterGrob(plot1),rasterGrob(plot2), rasterGrob(plot3), rasterGrob(plot4),
                  layout_matrix = rbind(c(1, 2), c(3, 4)),
                  ncol=2, widths = c(0.975,0.9), heights = c(5,6), 
