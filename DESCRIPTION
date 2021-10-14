@@ -1,0 +1,20 @@
+Package: allelic_heterogenity_simulator
+Type: Package
+Title: Computing and predicting gains in power owing to allelic heterogenity between population cohorts
+Version: 0.1.0
+Author: Christopher Neal Foley
+Maintainer: The package maintainer <chris.neal.foley@gmail.com>
+Description: Simulation protocol to asssess impact of allelic enrichment on meta-analyses for 2 studies across a range of minor allele frequencies (in study 1) and allelic enrichment values (for study 2). Summary genetic association data are simulated, parameterised by observed association and disease prevelance data.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.5)
+Imports: 
+  plotly, 
+  readxl, 
+  speedglm
+RoxygenNote: 7.1.1
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
