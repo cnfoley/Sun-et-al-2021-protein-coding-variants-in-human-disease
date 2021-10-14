@@ -10,6 +10,7 @@ R package to generate results as per Sun et al,. 2021, Genetic associations of p
 1. install.packages("devtools")
 2. library(devtools)
 3. install_github("cnfoley/Sun-et-al-2021-protein-coding-variants-in-human-disease", build_vignettes = TRUE)
-4. library(Sun-et-al-2021-protein-coding-variants-in-human-disease)
-5. browseVignettes("Sun-et-al-2021-protein-coding-variants-in-human-disease")
+4. install_github("cnfoley/mrclust", build_vignettes = TRUE)
+5. library(Sun-et-al-2021-protein-coding-variants-in-human-disease)
+6. browseVignettes("Sun-et-al-2021-protein-coding-variants-in-human-disease")
 
