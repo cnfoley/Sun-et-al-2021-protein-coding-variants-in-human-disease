@@ -4,7 +4,7 @@ R package to generate results as per Sun et al,. 2021, Genetic associations of p
 
 ## Functions
 * allelic_het_simulator - simulates allelic heterogenity between two population cohorts and computes the resuting IVW-uplift.
-* surface_plots - outputs surface plots for the observed (i.e., simulated) and expected (i.e., theoretically) predicted values for IVW-uplift across a range of MAFs and allelic enrichment values.
+* surface_plots - outputs surface plots for the observed (i.e., simulated) and expected (i.e., theoretically predicted) values for IVW-uplift across a range of MAFs and allelic enrichment values.
 
 ## Installation
 1. install.packages("devtools")
