@@ -1,4 +1,4 @@
-Package: allelic_heterogenity_simulator
+Package: AllelicHeterogenitySimulator
 Type: Package
 Title: Computing and predicting gains in power owing to allelic heterogenity between population cohorts
 Version: 0.1.0
@@ -11,7 +11,6 @@ LazyData: true
 Depends: R (>= 3.5)
 Imports: 
   plotly, 
-  readxl, 
   speedglm
 RoxygenNote: 7.1.1
 Suggests: 
