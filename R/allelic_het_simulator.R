@@ -14,7 +14,7 @@
 #' @param effect_direction character denoting the direction of association (i.e., risk increasing or decreasing). Default is risk increasing 
 #' @param meta_compare logical denoting whether we perform the primary meta-analysis (i.e., the meta-analysis which combines 2 studies from different populations) or to compare the relative effects of two meta-analyses: (i) 2 studies from different populations and (ii) 2 studies from the same population. Default is FALSE, i.e, to perform our primary meta-analysis.
 #' @param quantile_range numeric vector denoting the set of quantile summary values to record. Default is {0.1,0.5,0.9}, i.e., the 1st, 5th (median) and 9th deciles.
-#' @return Returned are user defined quantile range of simulated and theoretically predicted values of IVW-uplift generated from "n_simulated_datasets" per combination of MAF and enrichment value.
+#' @return Returned are results from the simulated and theoretically predicted values of IVW-uplift generated from "n_simulated_datasets" per combination of MAF and enrichment value.
 #' @export
 allelic_het_simulator <- function(betas, n1 = 392814, n2 = 260405, maf_range = c(1e-4,5e-4,1e-3,2.5e-3,5e-3, 1e-2),
                                    enrichment_value = c(1,5,10,20,30,50), disease_prevalence = 0.005, disease_prevalence_scale_stdy2 = 1.5,
@@ -50,7 +50,7 @@ if(meta_compare){
           bta_tmp2 = bta[bta_loc,2];#bta_tmp; #max(bta*i/maf2,0.1
           maf2 = i*(k);
           if(meta_compare){
-            res3 = logit_run(n = n2, maf = i, pi_y = j, bta = bta_tmp, full_analysis = full_analysis);
+            res3 = logit_run(n = n2, maf = i, pi_y = j, bta = bta_tmp);
           }
           res = logit_run(n = n1, maf = i, pi_y = j, bta = bta_tmp, full_analysis = full_analysis);
           res2 = logit_run(n = n2, maf = maf2, pi_y = j*disease_prevalence_scale_stdy2, bta = bta_tmp2, full_analysis = full_analysis);
@@ -113,11 +113,8 @@ if(meta_compare){
   dta_inflate_factor_new = dta_inflate_factor;
   dta_inflate_factor_new$alpha_obs = dta_inflate_factor$alpha_obs/dta_inflate_factor_ukb_meta$alpha_obs;
   dta_inflate_factor_new$alpha_exp = dta_inflate_factor$alpha_exp/dta_inflate_factor_ukb_meta$alpha_exp;
-  res = quantile_sums(dta_inflate_factor_new, values = quantile_range)
-  #res = quantile_sums(dta_inflate_factor_ukb_meta, values = quantile_range)
-}else{
-  res = quantile_sums(dta_inflate_factor, values = quantile_range)
+  dta_inflate_factor = dta_inflate_factor_new;
 }
-return(res)
+return(data = dta_inflate_factor)
 }
     
