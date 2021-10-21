@@ -2,20 +2,26 @@
 % Please edit documentation in R/exp_ratio.R
 \name{exp_ratio}
 \alias{exp_ratio}
-\title{Expected value of standard error ratios}
+\title{Exponent ratio}
 \usage{
 exp_ratio(p1_ast, n1_ast, pi1_cond, p2_ast, n2_ast, pi2_cond)
 }
 \arguments{
-\item{pi1_cond}{}
+\item{p1_ast}{maf in cases only, study 1}
 
-\item{p1}{}
+\item{n1_ast}{number of cases in study 1}
 
-\item{n1}{}
+\item{pi1_cond}{probability of disease conditional on expected value of genetic variant in study 1}
+
+\item{p2_ast}{maf in cases only, study 2}
+
+\item{n2_ast}{number of cases in study 2}
+
+\item{pi2_cond}{probability of disease conditional on expected value of genetic variant in study 2}
 }
 \value{
 Return expected value of standard error ratios
 }
 \description{
-Expected value of standard error ratios
+Exponent ratio
 }

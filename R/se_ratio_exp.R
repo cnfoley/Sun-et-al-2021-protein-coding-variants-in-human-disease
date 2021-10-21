@@ -1,11 +1,11 @@
 #' Expected value of standard error ratios
 #'
-#' @param p1 
-#' @param n1 
-#' @param pi1_cond 
-#' @param p1 
-#' @param n1 
-#' @param pi1_cond 
+#' @param p1 maf study 1
+#' @param n1 sample size study 1
+#' @param pi1_cond probability of disease conditional on expected value of genetic variant in study 1
+#' @param p2 maf study 2
+#' @param n2 sample size study 2 
+#' @param pi2_cond probability of disease conditional on expected value of genetic variant in study 2
 #' @return Return expected value of standard error ratios
 #' @export
 se_ratio_exp = function(p1, n1, pi1_cond, p2, n2, pi2_cond){

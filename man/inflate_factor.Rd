@@ -12,7 +12,7 @@ inflate_factor(sig_z, se_ratio)
 \item{se_ratio}{}
 }
 \value{
-Returned is denominator of IVW-uplift.
+Return IVW-uplift estimate.
 }
 \description{
 Inflation factor

@@ -7,9 +7,9 @@
 var_ratio(p1, p2)
 }
 \arguments{
-\item{p1}{}
+\item{p1}{maf study 1}
 
-\item{p2}{}
+\item{p2}{maf study 2}
 }
 \value{
 Returned is denominator of IVW-uplift.

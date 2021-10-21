@@ -4,10 +4,12 @@
 \alias{surface_plots}
 \title{Surface plots}
 \usage{
-surface_plots(results)
+surface_plots(data, meta_compare = FALSE)
 }
 \arguments{
-\item{results}{data.frame computed from "allelic_heterogenetity_boost.R"}
+\item{data}{data.frame computed from "allelic_heterogenetity_boost.R"}
+
+\item{meta_compare}{logical denoting whether we perform the primary meta-analysis (i.e., the meta-analysis which combines 2 studies from different populations) or to compare the relative effects of two meta-analyses: (i) 2 studies from different populations and (ii) 2 studies from the same population. Default is FALSE, i.e, to perform our primary meta-analysis.}
 }
 \value{
 Returned are surface plots of the observed (i.e., simulated) and expected (i.e., theoretically predicted) values for IVW-uplift.

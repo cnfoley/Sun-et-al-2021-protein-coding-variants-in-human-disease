@@ -2,6 +2,7 @@
 
 export(allelic_het_simulator)
 export(exp_ratio)
+export(figure_4_mr_clust)
 export(inflate_factor)
 export(logit_run)
 export(quantile_sums)

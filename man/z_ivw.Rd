@@ -7,13 +7,13 @@
 z_ivw(est1, se1, est2, se2)
 }
 \arguments{
-\item{est1}{}
+\item{est1}{regression estimate study 1}
 
-\item{se1}{}
+\item{se1}{regression std error study 1}
 
-\item{est2}{}
+\item{est2}{regression estimate study 2}
 
-\item{se2}{}
+\item{se2}{regression std error study 2}
 }
 \value{
 IVW z-score.

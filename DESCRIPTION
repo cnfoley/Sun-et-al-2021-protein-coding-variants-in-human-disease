@@ -11,7 +11,16 @@ LazyData: true
 Depends: R (>= 3.5)
 Imports: 
   plotly, 
-  speedglm
+  speedglm,
+  gridExtra,
+  grid,
+  ggplot2,
+  png,
+  tidyverse, 
+  magrittr,
+  dplyr,
+  mrclust,
+  ggrepel
 RoxygenNote: 7.1.1
 Suggests: 
     knitr,

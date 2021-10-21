@@ -1,9 +1,13 @@
 #' Surface plots
 #'
-#' @param results data.frame computed from "allelic_heterogenetity_boost.R" 
+#' @param data data.frame computed from "allelic_heterogenetity_boost.R" 
+#' @param meta_compare logical denoting whether we perform the primary meta-analysis (i.e., the meta-analysis which combines 2 studies from different populations) or to compare the relative effects of two meta-analyses: (i) 2 studies from different populations and (ii) 2 studies from the same population. Default is FALSE, i.e, to perform our primary meta-analysis.
 #' @return Returned are surface plots of the observed (i.e., simulated) and expected (i.e., theoretically predicted) values for IVW-uplift.
 #' @export
-surface_plots = function(results){
+surface_plots = function(data, meta_compare = FALSE){
+  
+  
+  results = quantile_sums(data);
   
   mat_obs = t(matrix(results$obsrved$median, nrow = 6, ncol = 6))
   #mat_obs = mat_obs[1:4,];
@@ -68,7 +72,7 @@ surface_plots = function(results){
   fig_exp;
   
   
-  dta_inflate_factor_diff = dta_inflate_factor;
+  dta_inflate_factor_diff = data;
   dta_inflate_factor_diff$alpha_obs = abs(dta_inflate_factor_diff$alpha_obs - dta_inflate_factor_diff$alpha_exp)/abs(dta_inflate_factor_diff$alpha_obs);
   res_diff = quantile_sums(dta_inflate_factor_diff)
   mat_diff = t(matrix(res_diff$obsrved$median, nrow = 6, ncol = 6))*100
@@ -105,40 +109,9 @@ surface_plots = function(results){
                                  )) 
   fig_diff;
   
-  library(gridExtra)
-  library(grid)
-  library(png)
+
   
-  if(meta_compare){
-    htmlwidgets::saveWidget(as_widget(fig_obs), "observed_ivw_uplift_ukb_vs_fg_meta.html")
-    htmlwidgets::saveWidget(as_widget(fig_exp), "expected_ivw_uplift_ukb_vs_fg_meta.html")
-    htmlwidgets::saveWidget(as_widget(fig_diff), "rel_err_ivw_uplift_ukb_vs_fg_meta.html")
-    plot1 <- readPNG('data/exp_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot2 <- readPNG('data/obs_rel_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot3 <- readPNG('data/rel_err_meta_uplift_maf_1e4_1e2_1000_trials.png')
-    plot4 <- readPNG("data/log10_exp_obs_uplift_both_meta_maf_1e4_1e2_1000_trials")
-    grid.arrange(rasterGrob(plot1),rasterGrob(plot2), rasterGrob(plot3), rasterGrob(plot4),
-                 layout_matrix = rbind(c(1, 2), c(3, 4)),
-                 ncol=2, widths = c(0.975,0.9), heights = c(5,6), 
-                 top=textGrob("",
-                              gp=gpar(fontsize=8,font=8)))
-  }else{
-    htmlwidgets::saveWidget(as_widget(fig_obs), "observed_ivw_uplift.html")
-    htmlwidgets::saveWidget(as_widget(fig_exp), "expected_ivw_uplift.html")
-    htmlwidgets::saveWidget(as_widget(fig_diff), "rel_err_ivw_uplift.html")
-    plot1 <- readPNG('exp_uplift_maf_1e4_1e2_1000_trials.png')
-    plot2 <- readPNG('obs_uplift_maf_1e4_1e2_1000_trials.png')
-    plot3 <- readPNG('rel_err_maf_1e4_1e2_1000_trials.png')
-    grid.arrange(rasterGrob(plot1),rasterGrob(plot2), rasterGrob(plot3),
-                 layout_matrix = rbind(c(1, 2), c(3, 3)),
-                 ncol=2, widths = c(0.975,1), heights = c(5,6), 
-                 top=textGrob("MAF enrichment.\nTheoretical IVW uplift (left), simulated IVW uplift (right),\n% absolute relative error (bottom)",
-                              gp=gpar(fontsize=8,font=8)))
-  }
-  
-  #    gridExtra::grid.arrange(fig_obs, fig_exp)
-  
-  df = quantile_sums(dta_inflate_factor_ukb_meta, rng = c(0.25,0.5,0.75));
+  df = quantile_sums(dta_inflate_factor_ukb_meta, values = c(0.25,0.5,0.75));
   df_obs = df$obsrved
   df_obs$Result = "Reference UKB_1/UKB_2\n(simulated)"
   df_exp = df$expected
@@ -147,7 +120,7 @@ surface_plots = function(results){
   df_res$shape = "no_enrichment";
   #df_res$first[1] = -4.99;
   
-  df = quantile_sums(dta_inflate_factor_new, rng = c(0.25,0.5,0.75));
+  df = quantile_sums(data, values = c(0.25,0.5,0.75));
   df_obs = df$obsrved[df$obsrved$maf_scale==5,];
   df_obs$Result = "5-fold enrichment\n(simulated)"
   df_obs$shape = "Enriched";
@@ -160,7 +133,7 @@ surface_plots = function(results){
   
   cbPalette <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
   
-  ggplot(data = df_res, aes(x=as.factor(maf), y=median, color=Result)) +
+  five_fold_plot = ggplot(data = df_res, aes(x=as.factor(maf), y=median, color=Result)) +
     geom_point(size = 2, position=position_dodge(width=0.6), aes(shape = Result)) +
     geom_errorbar(
       aes(ymin=first, ymax=ninth),
@@ -182,9 +155,9 @@ surface_plots = function(results){
     theme_bw() +
     theme(legend.key.size = unit(1.5, 'cm'),
           text = element_text(size=10)) 
-  
-  ggsave("log10_exp_obs_uplift_both_meta_maf_1e4_1e2_1000_trials", device = "png", 
-         dpi = 400, width = 5,height = 4.5, units = "in")
-  
-  #geom_segment(aes(x = 0.875, xend = 0.875, y = -4.85, yend = -5), colour = "#F8766D", arrow = arrow(length = unit(0.3, "cm")))
+  if(meta_compare){
+    return(list(observed = fig_obs, predicted = fig_exp, error = fig_diff, five_fold_plot = five_fold_plot))
+  }else{
+    return(list(observed = fig_obs, predicted = fig_exp, error = fig_diff))
+  }
 }

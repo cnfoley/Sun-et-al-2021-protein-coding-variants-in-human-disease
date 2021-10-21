@@ -7,11 +7,17 @@
 se_ratio_exp(p1, n1, pi1_cond, p2, n2, pi2_cond)
 }
 \arguments{
-\item{p1}{}
+\item{p1}{maf study 1}
 
-\item{n1}{}
+\item{n1}{sample size study 1}
 
-\item{pi1_cond}{}
+\item{pi1_cond}{probability of disease conditional on expected value of genetic variant in study 1}
+
+\item{p2}{maf study 2}
+
+\item{n2}{sample size study 2}
+
+\item{pi2_cond}{probability of disease conditional on expected value of genetic variant in study 2}
 }
 \value{
 Return expected value of standard error ratios

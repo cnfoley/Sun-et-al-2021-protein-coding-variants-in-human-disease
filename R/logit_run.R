@@ -1,12 +1,12 @@
 #' Simulated disease endpoints
 #'
-#' @param n 
-#' @param maf 
-#' @param pi_y 
-#' @param bta 
+#' @param n sample size
+#' @param maf minor allele frequency
+#' @param pi_y disease prevalence
+#' @param bta genetic effect size
 #' @return Return simulated disease endpoint.
 #' @export
-  logit_run = function(n, maf, pi_y, bta, full_analysis = T){
+  logit_run = function(n, maf, pi_y, bta){
     
     logit = function(pi){
       log(pi/(1-pi));
@@ -15,7 +15,7 @@
       tmp = a + b*g;
       1/(1+exp(-tmp));
     }
-    
+    full_analysis = TRUE;
     genos = rbinom(n = n, size = 2, prob = maf);
     tmp_pi_y = pi_y;
     pi_cond = expit(logit(pi_y),bta, 2*maf); 

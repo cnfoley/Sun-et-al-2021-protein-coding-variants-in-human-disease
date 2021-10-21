@@ -4,16 +4,16 @@
 \alias{logit_run}
 \title{Simulated disease endpoints}
 \usage{
-logit_run(n, maf, pi_y, bta, full_analysis = T)
+logit_run(n, maf, pi_y, bta)
 }
 \arguments{
-\item{n}{}
+\item{n}{sample size}
 
-\item{maf}{}
+\item{maf}{minor allele frequency}
 
-\item{pi_y}{}
+\item{pi_y}{disease prevalence}
 
-\item{bta}{}
+\item{bta}{genetic effect size}
 }
 \value{
 Return simulated disease endpoint.

@@ -7,13 +7,13 @@
 ratio_sig_z(z1, se1, z2, se2)
 }
 \arguments{
-\item{se1}{}
+\item{z1}{z-score study 1}
 
-\item{se2}{}
+\item{se1}{standard error study 1}
 
-\item{est1}{}
+\item{z2}{a-score study 2}
 
-\item{est2}{}
+\item{se2}{standard error study 2}
 }
 \value{
 IVW z-score.
