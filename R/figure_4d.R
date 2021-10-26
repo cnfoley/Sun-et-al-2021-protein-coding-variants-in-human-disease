@@ -1,4 +1,4 @@
-#' Meta analysed genetic association data from UKB and FG
+##' Meta analysed genetic association data from UKB and FG
 #'
 #'
 #' @format A data frame:

@@ -52,8 +52,8 @@ if(meta_compare){
           if(meta_compare){
             res3 = logit_run(n = n2, maf = i, pi_y = j, bta = bta_tmp);
           }
-          res = logit_run(n = n1, maf = i, pi_y = j, bta = bta_tmp, full_analysis = full_analysis);
-          res2 = logit_run(n = n2, maf = maf2, pi_y = j*disease_prevalence_scale_stdy2, bta = bta_tmp2, full_analysis = full_analysis);
+          res = logit_run(n = n1, maf = i, pi_y = j, bta = bta_tmp);
+          res2 = logit_run(n = n2, maf = maf2, pi_y = j*disease_prevalence_scale_stdy2, bta = bta_tmp2);
           if(sign(res["Z"])==sign(res2["Z"])){
             if(!full_analysis){
                       tmp1 = ratio_sig_z(z1 = res["Z"], se1 = res["se"], z2 = res2["Z"], se2 = res2["se"]);

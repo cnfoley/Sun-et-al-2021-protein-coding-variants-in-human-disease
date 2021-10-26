@@ -1,0 +1,91 @@
+---
+title: "Genetic associations of protein-coding variants in human disease"
+author: "Christopher Foley and Benjamin Sun"
+date: "`r Sys.Date()`"
+output:
+  pdf_document: default
+  html_document: null
+  toc: yes
+  toc_depth: 2
+vignette: |
+  %\VignetteIndexEntry{mrclust} 
+  %\VignetteEngine{knitr::rmarkdown} 
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 5, 
+  fig.height = 4
+)
+```
+
+```{r setup}
+library(AllelicHeterogenitySimulator)
+```
+
+
+# Introduction
+
+
+The vignette provides code and some
+
+
+# Installation
+
+
+```{r, echo=F}
+options(warn = -1)
+```
+
+```{r, eval=F}
+install.packages("devtools", repos='http://cran.us.r-project.org')
+library(devtools)
+install_github("cnfoley/Sun-et-al-2021-protein-coding-variants-in-human-disease", build_vignettes = FALSE)
+install_github("cnfoley/mrclust", build_vignettes = TRUE)
+library(AllelicHeterogenitySimulator)
+browseVignettes("AllelicHeterogenitySimulator")
+
+```
+
+# Reproducing the allelic heterogeneity simulator 
+
+...
+
+## Replicating Figure 1d 
+
+Here we replicate the results from...We begin by
+loading the package and the SBP/CAD summary data. These data are avaiable with
+the package and can be found by typing
+
+```{r}
+library(AllelicHeterogenitySimulator)
+betas <- AllelicHeterogenitySimulator::betas
+head(betas)
+```
+
+In the... (UKB) and (FG). A description of these data is found by
+typing:
+
+```{r}
+?AllelicHeterogenitySimulator::betas
+```
+
+The function "allelic_het_simulator" (minimally) requires the following summary data
+information: 
+
+## Running the simulator 
+
+
+To run ...      
+
+```{r}
+############################
+########### SBP-CAD analysis
+############################
+
+results = allelic_het_simulator(betas = betas, n_simulated_datasets = 2);
+
+```

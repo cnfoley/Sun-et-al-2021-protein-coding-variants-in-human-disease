@@ -24,7 +24,7 @@
     if(full_analysis){
       dta = data.frame(Y = y, X = (genos-mean(genos)));
       #model = glm(formula = Y~X, family = binomial(link = "logit"), data = dta);
-      model = speedglm(formula = Y~X, data = dta, family = binomial(link = "logit"));
+      model = speedglm::speedglm(formula = Y~X, data = dta, family = binomial(link = "logit"));
       #smy = summary.glm(model);
       smy = summary(model)
       coefs = smy$coefficients
@@ -43,7 +43,7 @@
     }else{
       dta = data.frame(Y = y, X = (genos-mean(genos)));
       #model = glm(formula = Y~X, family = binomial(link = "logit"), data = dta);
-      model = speedglm(formula = Y~X, data = dta, family = binomial(link = "logit"));
+      model = speedglm::speedglm(formula = Y~X, data = dta, family = binomial(link = "logit"));
       #smy = summary.glm(model);
       smy = summary(model)
       coefs = smy$coefficients
